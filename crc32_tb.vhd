@@ -5,6 +5,8 @@
 
 -- Simple testbench for playing around with the CRC calculation code
 
+--hdlregression:tb
+
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -91,7 +93,7 @@ begin
 			end if;
 			wait for WAIT_PERIOD;
 			if crc /= comparison_crc then
-				report "CRC mismatch" severity note;
+				report "CRC mismatch" severity error;
 			end if;
 		end loop;
 
@@ -110,10 +112,14 @@ begin
 		wait for WAIT_PERIOD;
 
 		if crc /= X"C704dd7B" then
-			report "Final CRC wrong" severity note;
+			report "Final CRC wrong" severity error;
+		else
+			report "Test PASS" severity note;
 		end if;
 
-		wait;
+ 	-- Finish the simulation
+    std.env.stop;
+    wait;  -- to stop completely
 	end process;
 
 end architecture;

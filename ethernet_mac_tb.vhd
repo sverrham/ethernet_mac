@@ -5,6 +5,7 @@
 
 -- Self-checking testbench for the complete ethernet_mac (excluding MIIM)
 
+--hdlregression:tb
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
@@ -796,6 +797,7 @@ begin
 		test_one_speed;
 
 		report "MAC functional check ended OK" severity note;
+		report "Pass" severity note;
 		-- Stop simulation
 		run <= FALSE;
 		wait;
