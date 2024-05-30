@@ -75,3 +75,4 @@ ghdl/
 ethernet_mac_tb
 
 hdlregression_output/
+hdlreg/
